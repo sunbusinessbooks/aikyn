@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Server 4× A100 — V2</title>
+  <style>
+    :root{--bg:#07101f;--text:#eef4ff;--muted:#aebee6;--line:#2b4379}
+    *{box-sizing:border-box} body{margin:0;font:16px/1.6 Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#07101f,#0b1430);color:var(--text)}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px}.hero,.card,.diagram{background:rgba(255,255,255,.03);border:1px solid rgba(122,162,255,.18);border-radius:24px}
+    .hero{padding:34px}.grid{display:grid;gap:18px}.g2{grid-template-columns:1.2fr .8fr}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    h1,h2,h3{line-height:1.15}.muted{color:var(--muted)} .card{padding:20px}.diagram{padding:18px;overflow:auto}
+    .chip{display:inline-block;padding:6px 10px;border:1px solid rgba(122,162,255,.24);border-radius:999px;margin:4px 6px 0 0;color:#dbe7ff}
+    @media(max-width:860px){.g2,.g3{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="chip">LLM + Vision + RAG + OCR + Agents</div>
+      <div class="chip">Self-contained HTML</div>
+      <h1>AI-сервер на 4× A100 как единый AI Core Node</h1>
+      <p class="muted">Рабочая архитектура: роли GPU, production RAG, OCR-пайплайн, агентный слой, observability и план внедрения.</p>
+    </section>
+    <h2>1. Роли GPU</h2>
+    <div class="grid g3">
+      <div class="card"><h3>GPU1 · LLM</h3><p>Qwen2.5-Instruct, Llama 3.x, Mixtral. Чат, reasoning, synthesis.</p></div>
+      <div class="card"><h3>GPU2 · Vision</h3><p>Qwen2-VL, Florence-2, LLaVA. Скриншоты, интерфейсы, VQA.</p></div>
+      <div class="card"><h3>GPU3/4 · RAG + Agents</h3><p>bge-m3, e5-large-v2, bge-reranker, кодовые и агентные сценарии.</p></div>
+    </div>
+    <h2>2. Production RAG</h2>
+    <div class="grid g2">
+      <div class="card"><h3>Pipeline</h3><p>ingestion → OCR/layout parsing → semantic chunking → embeddings → hybrid retrieval → reranking → context building → generation</p></div>
+      <div class="card"><h3>Службы</h3><p>FastAPI, vLLM, Qdrant, Redis, PostgreSQL, PaddleOCR, Prometheus, Grafana, Nginx.</p></div>
+    </div>
+  </main>
+</body>
+</html>
